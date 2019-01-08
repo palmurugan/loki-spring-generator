@@ -1,6 +1,6 @@
 {
   "name": "generator-loki",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Spring Code Generation Tool",
   "main": "index.js",
   "scripts": {
@@ -23,5 +23,14 @@
   "license": "ISC",
   "dependencies": {
     "yeoman-generator": "^3.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palmurugan/loki-spring-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/palmurugan/loki-spring-generator/issues"
+  },
+  "homepage": "https://github.com/palmurugan/loki-spring-generator#readme"
 }
