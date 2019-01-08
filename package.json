@@ -1,0 +1,27 @@
+{
+  "name": "generator-loki",
+  "version": "1.0.0",
+  "description": "Spring Code Generation Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "spring",
+    "microservice",
+    "microservice generator",
+    "generator",
+    "springboot",
+    "springboot generator",
+    "code generator",
+    "yeoman-generator"
+  ],
+  "author": "PalMurugan C",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^3.2.0"
+  }
+}
