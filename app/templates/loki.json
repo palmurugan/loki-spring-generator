@@ -1,0 +1,4 @@
+{
+    "applicationName": "<%=applicationName %>",
+    "packageName": "<%= packageName %>"
+}

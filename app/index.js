@@ -24,6 +24,11 @@ module.exports = class extends Generator {
         const javaDirTemplate = 'src/main/java/package/';
         const resourceDirTemplate = 'src/main/resources/';
 
+        // Loki.json
+        this.fs.copyTpl(
+            this.templatePath('loki.json'),
+            this.destinationPath('loki.json'),
+            this.metadata);
 
         // POM.XML
         this.fs.copyTpl(

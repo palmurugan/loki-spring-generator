@@ -6,6 +6,32 @@ is a Yeoman generator that creates a SpringBoot Microservice application with JW
 
 We can create an entity with different types of mappings (OneToMany, ManyToOne, OneToOne, ManyToMany). We can create an entities whith different databases like RDBMS, MongoDB, Casandra etc.
 
+```
+yo loki:entity <metadata location>
+
+```
+
+### Sample Metadata for entity creation
+```
+{
+    "entityDetails": [
+        {
+            "entityName": "User",
+            "attributes": [
+                {
+                    "name": "userName",
+                    "type": "String"
+                },
+                {
+                    "name": "age",
+                    "type": "Integer"
+                }
+            ]
+        }
+    ]
+}
+```
+
 
 ## Table of Contents
 
