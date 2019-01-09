@@ -15,15 +15,24 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-package <%=packageName %>.util;
+package <%= packageName %>.web.rest;
 
-public class ApplicationConstants {
+import javax.inject.Inject;
 
-    public static final String ACTIVE = "A";
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-    public static final String DEACTIVE = "D";
+import com.genesis.common.controller.AbstractRestController;
+import <%= packageName %>.domain.<%= entityName%>;
+import <%= packageName %>.service.<%= entityName%>Service;
 
-    private ApplicationConstants() {
 
+@RestController
+@RequestMapping("/<%= entityName.toLowerCase() %>")
+public class <%= entityName%>Resource extends AbstractRestController<<%= entityName%>, Long> {
+
+	@Inject
+    public <%= entityName%>Resource(<%= entityName%>Service ref) {
+		  super(ref);
     }
 }

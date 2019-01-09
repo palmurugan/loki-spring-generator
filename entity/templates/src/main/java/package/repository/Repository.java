@@ -15,15 +15,14 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-package <%=packageName %>.util;
+package <%= packageName %>.repository;
 
-public class ApplicationConstants {
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-    public static final String ACTIVE = "A";
+import <%= packageName %>.domain.<%= entityName%>;
 
-    public static final String DEACTIVE = "D";
+@Repository
+public interface <%= entityName%>Repository extends PagingAndSortingRepository<<%= entityName%>, Long> {
 
-    private ApplicationConstants() {
-
-    }
 }

@@ -15,15 +15,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-package <%=packageName %>.util;
+package <%=packageName %>.service;
 
-public class ApplicationConstants {
+import java.util.Optional;
 
-    public static final String ACTIVE = "A";
+import com.genesis.common.service.IGenericService;
+import <%=packageName %>.domain.<%=entityName%>;
 
-    public static final String DEACTIVE = "D";
+public interface <%=entityName%>Service extends IGenericService<<%=entityName%>, Long> {
 
-    private ApplicationConstants() {
-
-    }
 }
