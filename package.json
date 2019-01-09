@@ -1,6 +1,6 @@
 {
   "name": "generator-loki",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Spring Code Generation Tool",
   "main": "index.js",
   "scripts": {
