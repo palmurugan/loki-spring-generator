@@ -26,9 +26,45 @@ module.exports = class extends Generator {
 
 
         // POM.XML
-        this.fs.copyTpl(this.templatePath('pom.xml'), this.destinationPath('pom.xml'), this.metadata);
+        this.fs.copyTpl(
+            this.templatePath('pom.xml'),
+            this.destinationPath('pom.xml'),
+            this.metadata);
 
         // Application Base Generation 
-        this.fs.copyTpl(this.templatePath(javaDirTemplate + 'App.java'), this.destinationPath(javaDir + this.metadata.applicationName + '.java'), this.metadata);
+        this.fs.copyTpl(
+            this.templatePath(javaDirTemplate + 'App.java'),
+            this.destinationPath(javaDir + this.metadata.applicationName + '.java'),
+            this.metadata);
+
+        // Configuration Generation
+        this.fs.copyTpl(
+            this.templatePath(javaDirTemplate + 'config/SwaggerConfiguration.java'),
+            this.destinationPath(javaDir + 'config/SwaggerConfiguration.java'), this.metadata);
+
+        // Utils Generation
+        this.fs.copyTpl(
+            this.templatePath(javaDirTemplate + 'utils/ApplicationConstants.java'),
+            this.destinationPath(javaDir + 'utils/ApplicationConstants.java'), this.metadata);
+
+        // BaseException Generation
+        this.fs.copyTpl(
+            this.templatePath(javaDirTemplate + 'web/exception/ExceptionTranslator.java'),
+            this.destinationPath(javaDir + 'web/exception/ExceptionTranslator.java'),
+            this.metadata);
+
+        // Base Rest Generation
+        this.fs.copyTpl(
+            this.templatePath(javaDirTemplate + 'web/rest/LokiResource.java'),
+            this.destinationPath(javaDir + 'web/rest/LokiResource.java'),
+            this.metadata);
+
+        // Resource generation
+        this.fs.copyTpl(
+            this.templatePath(resourceDirTemplate + 'application.properties'),
+            this.destinationPath(resourceDir + 'application.properties'),
+            this.metadata);
+
+
     }
 }

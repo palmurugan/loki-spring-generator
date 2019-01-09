@@ -22,6 +22,7 @@
   "author": "PalMurugan C",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
     "yeoman-generator": "^3.2.0"
   },
   "devDependencies": {},
