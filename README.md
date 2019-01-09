@@ -1,9 +1,9 @@
-# SpringBoot Application Generator
+# Loki - Microservice Generator
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
 is a Yeoman generator that creates a SpringBoot Microservice application with JWT / Keycloak SSO authentication.
 
-## Entity Generator
+## Entity Generation
 
 We can create an entity with different types of mappings (OneToMany, ManyToOne, OneToOne, ManyToMany). We can create an entities whith different databases like RDBMS, MongoDB, Casandra etc.
 
