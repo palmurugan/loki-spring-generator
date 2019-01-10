@@ -40,33 +40,31 @@ Ex: $ yo loki:entity ../metadata/metadata.json
 metadata.json
 
 {
-    "entityDetails": [
+  "entityDetails": [
+    {
+      "entityName": "User",
+      "attributes": [
         {
-            "entityName": "User",
-            "attributes": [
-                {
-                    "name": "userName",
-                    "type": "String"
-                },
-                {
-                    "name": "age",
-                    "type": "Integer"
-                }
-            ]
-        },{
-            "entityName": "Address",
-            "attributes": [
-                {
-                    "name": "city",
-                    "type": "String"
-                },
-                {
-                    "name": "state",
-                    "type": "String"
-                }
-            ]
+          "name": "userName",
+          "type": "String",
+          "unique": true,
+          "nullable": false
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "age",
+          "type": "Integer",
+          "unique": false,
+          "nullable": false
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 

@@ -51,11 +51,9 @@ public class <%= entityName %> extends Auditable<String> implements Serializable
 	private Long id;
      
     <% attributes.forEach(attribute => { %>
-    @Column(name = "<%= attribute.name.toLowerCase() %>"<% if(attribute.unique) {%>, unique=true<%}%><%if(!attribute.nullable) {%>, nullable=false<%}%>)
-    <% if(!attribute.nullable) {%>
-    @NotNull(message = "<%= attribute.name.toLowerCase() %> should not be null")
-	@NotBlank(message = "<%= attribute.name.toLowerCase() %> should not be empty")
-    <% } %>
+    @Column(name = "<%= attribute.name.toLowerCase() %>"<% if(attribute.unique) {%>, unique=true<%}%><%if(!attribute.nullable) {%>, nullable=false<%}%>)<% if(!attribute.nullable) {%>
+    @NotNull(message = "<%= attribute.name.toLowerCase() %> is required")<% } %><% if(!attribute.nullable && attribute.type == 'String'){%>
+	@NotBlank(message = "<%= attribute.name.toLowerCase() %> should not be empty")<% } %>
     private <%= attribute.type %> <%= attribute.name %>;
    <% }); %>
 
