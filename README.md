@@ -67,6 +67,10 @@ metadata.json
   ]
 }
 ```
+# Report Issue
+Please feel free to report an issue
+
+https://github.com/palmurugan/loki-spring-generator/issues
 
 # Author
 PalMurugan C

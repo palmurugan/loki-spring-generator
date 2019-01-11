@@ -34,12 +34,16 @@ import javax.persistence.OneToMany;
 
 import com.genesis.common.annotation.Unique;
 import com.genesis.common.domain.Auditable;
+import com.genesis.common.annotation.Unique;
 import com.genesis.common.validator.ValidationGroup;
-
+import <%= packageName %>.service.impl.<%= entityName%>ServiceImpl;
 import lombok.Data;
 
 @Entity
 @Table(name = "<%= entityName.toLowerCase() %>")
+@Unique.List({<% attributes.forEach(attribute => { if(attribute.unique) {%>
+	@Unique(service = <%= entityName%>ServiceImpl.class, fieldName = "<%=attribute.name%>", message = "<%=attribute.name%> already exists"),<%} }); %>
+})
 @Data
 public class <%= entityName %> extends Auditable<String> implements Serializable {
 
@@ -56,5 +60,4 @@ public class <%= entityName %> extends Auditable<String> implements Serializable
 	@NotBlank(message = "<%= attribute.name.toLowerCase() %> should not be empty")<% } %>
     private <%= attribute.type %> <%= attribute.name %>;
    <% }); %>
-
 }

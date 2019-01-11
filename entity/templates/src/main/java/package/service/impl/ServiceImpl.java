@@ -36,4 +36,22 @@ public class <%= entityName%>ServiceImpl extends GenericServiceImpl<<%= entityNa
 	public <%= entityName%>ServiceImpl(<%=entityName%>Repository reference) {
 		super(reference);
 	}
+
+	@Override
+	public boolean fieldValueExists(Long id, Object value, String fieldName) throws UnsupportedOperationException {
+		<%= entityName%> entityReference = null;
+		if (id != null) {<% attributes.forEach(attribute => { if(attribute.unique) { %>
+			if (fieldName.equals("<%=attribute.name%>")) {
+				entityReference = reference.findBy<%=attribute.name.charAt(0).toUpperCase()+ attribute.name.slice(1)%>(value.toString());
+			}<%} }); %>
+			if (entityReference != null && !entityReference.getId().equals(id)) {
+				return Boolean.TRUE;
+			}
+		} else { <% attributes.forEach(attribute => { if(attribute.unique) { %>
+			if (fieldName.equals("<%=attribute.name%>")) {
+				return reference.existsBy<%=attribute.name.charAt(0).toUpperCase()+ attribute.name.slice(1)%>(value.toString());
+			}<%} }); %>	
+		}
+		return Boolean.FALSE;
+	}
 }
