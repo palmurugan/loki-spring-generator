@@ -20,6 +20,10 @@ module.exports = class extends Generator {
         this.content.entityDetails.forEach(entity => {
             entity.packageName = this.lokiContent.packageName;
 
+            if (entity.mappings) {
+                console.log("mappings present", entity)
+            }
+
             // Domain Creation
             this.fs.copyTpl(
                 this.templatePath(javaDirTemplate + 'domain/Entity.java'),

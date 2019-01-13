@@ -37,8 +37,6 @@ Ex: $ yo loki:entity ../metadata/metadata.json
 
 ### Sample Metadata for entity creation
 ```json
-metadata.json
-
 {
   "entityDetails": [
     {
@@ -48,7 +46,13 @@ metadata.json
           "name": "userName",
           "type": "String",
           "unique": true,
-          "nullable": false
+          "nullable": false,
+          "minLength": 6,
+          "maxLength": 30,
+          "regex": {
+            "pattern": "[A-Za-z0-9]+",
+            "errorMessage": "Username should be alphanumeric"
+          }
         },
         {
           "name": "password",
@@ -57,10 +61,40 @@ metadata.json
           "nullable": false
         },
         {
+          "name": "email",
+          "type": "String",
+          "unique": true,
+          "nullable": false
+        },
+        {
           "name": "age",
           "type": "Integer",
           "unique": false,
           "nullable": false
+        }
+      ],
+      "mappings": [
+        {
+          "type": "OneToMany",
+          "entity": "Role",
+          "placeholder": "roles"
+        }
+      ]
+    },
+    {
+      "entityName": "Role",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "String",
+          "unique": true,
+          "nullable": false,
+          "minLength": 4,
+          "maxLength": 15,
+          "regex": {
+            "pattern": "[A-Za-z0-9]+",
+            "errorMessage": "RoleName should be alphanumeric"
+          }
         }
       ]
     }
