@@ -9,12 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Pattern;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.genesis.common.domain.Auditable;
 import com.genesis.common.annotation.Unique;
@@ -40,6 +43,7 @@ public class <%= entityName %> extends Auditable<String> implements Serializable
 	private Long id;
      
     <% attributes.forEach(attribute => { %>
+    @Valid
     @Column(name = "<%= attribute.name.toLowerCase() %>"<% if(attribute.unique) {%>, unique=true<%}%><%if(!attribute.nullable) {%>, nullable=false<%}%>)<% if(!attribute.nullable) {%>
     @NotNull(message = "<%= attribute.name.toLowerCase() %> is required")<% } %><% if(!attribute.nullable && attribute.type == 'String'){%>
 	@NotBlank(message = "<%= attribute.name.toLowerCase() %> should not be empty")<% } %><% if(attribute.minLength != null) { %> 
@@ -48,7 +52,9 @@ public class <%= entityName %> extends Auditable<String> implements Serializable
     @Pattern(regexp = "<%= attribute.regex.pattern %>",message="<%= attribute.regex.errorMessage %>")<%}%>
     private <%= attribute.type %> <%= attribute.name %>;
     <% }); %><% if(typeof mappings !== 'undefined') { %> <% mappings.forEach(mapping => { %>
-    @<%=mapping.type%>(cascade = CascadeType.ALL)
-    private Set<<%=mapping.entity %>> <%=mapping.placeholder%>; 
+    @<%=mapping.type%>(<%if(typeof mapping.type=='OneToMany'){%>cascade = CascadeType.ALL<%}%>)
+    @JoinColumn(name = "<%=mapping.joinColumn%>") <% if(typeof mapping.type === 'OneToMany') {%>
+    private Set<<%=mapping.entity %>> <%=mapping.placeholder%>;<% } else {%>
+    private <%=mapping.entity %> <%=mapping.placeholder%>; <%}%>
     <% }); %><%}%>
 }

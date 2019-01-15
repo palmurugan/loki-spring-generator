@@ -38,7 +38,8 @@
         {
           "type": "OneToMany",
           "entity": "Role",
-          "placeholder": "roles"
+          "placeholder": "roles",
+          "joinColumn" : "user_id"
         }
       ]
     },
