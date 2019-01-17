@@ -25,6 +25,16 @@ module.exports = class extends Generator {
                 this.templatePath(javaDirTemplate + 'domain/Entity.java'),
                 this.destinationPath(javaDir + 'domain/' + entity.entityName + '.java'), entity);
 
+            // DTO Creation
+            this.fs.copyTpl(
+                this.templatePath(javaDirTemplate + 'dto/Dto.java'),
+                this.destinationPath(javaDir + 'dto/' + entity.entityName + 'DTO.java'), entity);
+
+            // Mapper Creation
+            this.fs.copyTpl(
+                this.templatePath(javaDirTemplate + 'mapper/Mapper.java'),
+                this.destinationPath(javaDir + 'mapper/' + entity.entityName + 'Mapper.java'), entity);
+
             // Repository Creation
             this.fs.copyTpl(
                 this.templatePath(javaDirTemplate + 'repository/Repository.java'),
