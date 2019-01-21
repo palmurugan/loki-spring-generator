@@ -8,6 +8,6 @@ import <%=packageName %>.dto.<%=entityName%>DTO;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface RoleMapper extends GenericMapper<<%=entityName%>, <%=entityName%>DTO> {
+public interface <%=entityName%>Mapper extends GenericMapper<<%=entityName%>, <%=entityName%>DTO> {
 
 }
