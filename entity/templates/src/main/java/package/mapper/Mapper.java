@@ -7,7 +7,7 @@ import <%=packageName %>.dto.<%=entityName%>DTO;
 
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface <%=entityName%>Mapper extends GenericMapper<<%=entityName%>, <%=entityName%>DTO> {
 
 }

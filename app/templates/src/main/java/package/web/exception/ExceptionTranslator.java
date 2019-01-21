@@ -32,7 +32,7 @@ public class ExceptionTranslator {
 		for (org.springframework.validation.FieldError fldError : excepion.getBindingResult().getFieldErrors()) {
 			errors.add(fldError.getField() + " : " + fldError.getDefaultMessage());
 		}
-		for (org.springframework.validation.ObjectError fldError : excepion.getBindingResult().getAllErrors()) {
+		for (org.springframework.validation.ObjectError fldError : excepion.getBindingResult().getGlobalErrors()) {
 			errors.add(fldError.getDefaultMessage());
 		}
 		fieldError.setErrors(errors);
